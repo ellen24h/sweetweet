@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Sentimental Sky</title>
+    <script type="text/javascript" src="d3/d3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<div class="sky-gradient sky-gradient-00"></div>
+<div class="sky-gradient sky-gradient-01"></div>
+<div class="sky-gradient sky-gradient-02"></div>
+<div class="sky-gradient sky-gradient-03"></div>
+<div class="sky-gradient sky-gradient-04"></div>
+<div class="sky-gradient sky-gradient-05"></div>
+<div class="sky-gradient sky-gradient-06"></div>
+<div class="sky-gradient sky-gradient-07"></div>
+<div class="sky-gradient sky-gradient-08"></div>
+<div class="sky-gradient sky-gradient-09"></div>
+<div class="sky-gradient sky-gradient-10"></div>
+<div class="sky-gradient sky-gradient-11"></div>
+<div class="sky-gradient sky-gradient-12"></div>
+<div class="sky-gradient sky-gradient-13"></div>
+<div class="sky-gradient sky-gradient-14"></div>
+<div class="sky-gradient sky-gradient-15"></div>
+<div class="sky-gradient sky-gradient-16"></div>
+<div class="sky-gradient sky-gradient-17"></div>
+<div class="sky-gradient sky-gradient-18"></div>
+<div class="sky-gradient sky-gradient-19"></div>
+<div class="sky-gradient sky-gradient-20"></div>
+<div class="sky-gradient sky-gradient-21"></div>
+<div class="sky-gradient sky-gradient-22"></div>
+<div class="sky-gradient sky-gradient-23"></div>
+<div class="sky-gradient sky-gradient-24"></div>
+<script type="text/javascript">
+
+
+    var dataset = [3, 9, 6, 6, -2, -9, 3, -3, -6, -6];
+
+    var w = 1160;
+    var h = 1000;
+    var padding = 0;
+    var svg = d3.select("body")
+            .append("svg")
+            .attr("width", w)
+            .attr("height",h);
+
+    var gradient = svg
+            .append("linearGradient")
+            .attr("y1", 0)
+            .attr("y2", 100)
+            .attr("x1", "0")
+            .attr("x2", "0")
+            .attr("id", "gradient")
+            .attr("gradientUnits", "userSpaceOnUse")
+
+    gradient
+            .append("stop")
+            .attr("offset", "0")
+            .attr("stop-color", "#b7eaff")
+
+    gradient
+            .append("stop")
+            .attr("offset", "0.5")
+            .attr("stop-color", "#071B26")
+
+
+    var bar = svg.selectAll("rect")
+            .data(dataset)
+            .enter()
+            .append("rect")
+            .attr("x",function(d,i) {
+                return i * (w/ dataset.length);
+            })
+            .attr("y",function(d) {
+                return 0;
+            })
+            .attr("width", w / dataset.length - padding)
+            .attr("height",function(d) {
+                return 1000;
+            })
+            .attr("fill", "url(#gradient)")
+</script>
+</body>
+</html>
